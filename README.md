@@ -27,7 +27,7 @@ Response:
 
 ### Get an access token
 ```bash
-http POST localhost:3030/authentication strategy=local email=example@example.com password=secret 
+http POST localhost:3030/authentication email=example@example.com password=secret
 ```
 Response
 ```javascript
