@@ -6,48 +6,35 @@
 
 This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
 
-## Getting Started
+## Usage
 
-Getting up and running is as easy as 1, 2, 3.
+The [HTTPie](https://httpie.org/) is recommended to easily test RESTful APIs.
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/service-auth; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
+### Register a new user
+```bash
+http POST localhost:3030/users email=example@example.com password=secret
 ```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers help                           # Show all commands
+Response:
+```javascript
+{
+    "id": 1,
+    "email": "example@example.com",
+    // password is removed by an after-hook!
+    "createdAt": "2018-10-16T17:00:27.292Z",
+    "updatedAt": "2018-10-16T17:00:27.292Z"
+}
 ```
 
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
+### Get an access token
+```bash
+http POST localhost:3030/authentication strategy=local email=example@example.com password=secret 
+```
+Response
+```javascript
+{
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJ1c2VySWQiOjEsImlhdCI6MTUzOTcxMTQyMSwiZXhwIjoxNTM5Nzk3ODIxLCJhdWQiOiJodHRwczovL3lvdXJkb21haW4uY29tIiwiaXNzIjoiZmVhdGhlcnMiLCJzdWIiOiJhbm9ueW1vdXMiLCJqdGkiOiIzN2NmN2EwNC1mMzI5LTQxN2QtODA4ZC0zNzBmYTA4YjUyNDYifQ.stSz89kTfHZDNwsRor4QPPTFUuM3JA-kvgScSep5_yc"
+}
+```
 
 ## License
 
