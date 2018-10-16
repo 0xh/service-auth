@@ -16,7 +16,7 @@
     "service": "users",
     "jwt": {
       "header": {
-        "typ": "access"
+        "typ": "JWT"
       },
       "audience": "https://yourdomain.com",
       "subject": "anonymous",
